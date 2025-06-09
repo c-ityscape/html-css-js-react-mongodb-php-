@@ -5,13 +5,13 @@ function List(props){
     //fruits.sort((a,b)=>b.name.localeCompare(a.name)); // Sort fruits by name in reverse alphabetical order
     const itemList = props.items;
     const category = props.category;
-    const listItems = itemList.map(item=> <li>{item.name} - {item.calories} calories</li>)
+    const listItems = itemList.map(item=> <li>{item.name} - <b>{item.calories} calories</b></li>)
     return(
         <>
-        <h2>{category}</h2>
-        <ul>
+        <h2 className="list-category">{category}</h2>
+        <ol className="list-items">
             {listItems}
-        </ul>
+        </ol>
         </>
          
     );
