@@ -3,6 +3,8 @@ import Student from './Student.jsx';
 import Button from './Button.jsx';
 import UserGreeting from './UserGreeting.jsx';
 import List from './List.jsx';
+import ProfilePicture from './ProfilePicture.jsx';
+import MyComponent from './MyComponent.jsx';
 function App() {
   // const fruits = [{name: 'Apple', calories: 95}, {name: 'Banana', calories: 105}, {name: 'Cherry', calories: 50}, {name: 'Date', calories: 277}, {name: 'Elderberry', calories: 73}];
   // const vegetables = [{name: 'Carrot', calories: 41}, {name: 'Broccoli', calories: 55}, {name: 'Spinach', calories: 23}, {name: 'Potato', calories: 77}, {name: 'Cucumber', calories: 16}];
@@ -19,7 +21,13 @@ function App() {
 {fruits.length>0 && <List items={fruits} category="Fruits"/>} }
 
 </>*/
+/* <>
 <Button />
+<ProfilePicture />
+</> */
+<>
+<MyComponent />
+</>
 
 );
 }

@@ -18,14 +18,25 @@
 // }
 // export default Button
 function Button() {
-    const handleClick= () =>{
-        console.log("OUch! You clicked me!");
-    
+    let count =0
+    // const handleClick= (name) =>{
+    //     if(count<3){
+    //         count++;
+    //         console.log(`${name} clicked me! ${count} times`);
+    //     }
+    //     else{
+    //         console.log(`${name} stop clicking me!`);
+    //     }
+    // }
+
+    const handleClick = (event)=>{
+        event.target.textContent = "Ouch! I got clicked!";
+        console.log(event);
     }
-    const handleClick2 = (name) => console.log(`${name} stopc clicking me!`);
+   // const handleClick2 = (name) => console.log(`${name} stopc clicking me!`);
     return (
         <>
-        <button onClick={() => handleClick2("Bro")}>Click Me 😀</button>
+        <button onClick={(e) => handleClick(e)}>Click Me 😀</button>
         </>
     )
 }
