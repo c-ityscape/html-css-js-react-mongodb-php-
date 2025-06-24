@@ -27,16 +27,16 @@ function App() {
 <Button />
 <ProfilePicture />
 </> */
-/*<>
+<>
 <MyComponent />
-</>*/ 
+</>
 /*<>
 <Counter />
 </>
 */
-<>
+/*<>
 <ColorPicker />
-</>
+</>*/
 );
 }
 

@@ -2,7 +2,11 @@ import React, {useState} from "react";
 function Counter(){
    const [count, setCount] = useState(0);
    const increment =()=>{
-    setCount(count + 1);
+    // setCount(count + 1);
+    // setCount(count + 1);
+    // setCount(count +1); // This will not work as expected due to closure
+    setCount(prevCount=> prevCount +1); // This is the correct way to update state based on previous state
+    setCount(prevCount=> prevCount +1); // This will work correctly
    }
    const decrement =()=>{
     setCount(count-1);
