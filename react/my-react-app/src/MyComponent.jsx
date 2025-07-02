@@ -1,33 +1,114 @@
 import { func } from "prop-types";
-import React , {useState} from "react";
-function MyComponent(){
-    const [car,setCar] = useState({year: 2024, 
-        make:"Ford", 
-        model:"Mustang"});
+import React, {useState} from "react";
 
-        function handleYearChange(event){
-            // setCar({...car,year:event.target.value});
-            setCar(prevCar => ({...prevCar, year: event.target.value}));
-        }
-        function handleMakeChange(event){
-            // setCar({...car,make:event.target.value})
-            setCar(prevCar => ({...prevCar, make: event.target.value}));
-        }
-        function handleModelChange(event){
-            // setCar({...car,model:event.target.value})
-            setCar(prevCar => ({...prevCar, model: event.target.value}));
-        }
+function MyComponent(){
+    const [cars,setCars] = useState([]);
+    const [carYear, setCarYear] = useState(new Date().getFullYear());
+    const [carMake, setCarMake] = useState("");
+    const [carModel, setCarModel] = useState("");
+
+    function handleAddCar(){
+        const newCar = {
+            year: carYear, 
+            make: carMake,
+            model: carModel
+        };
+        setCars(c=> [...c, newCar])
+        setCarYear(new Date().getFullYear()); //reset year to current year
+        setCarMake(""); //reset make to empty string
+        setCarModel(""); //reset model to empty string
+    }
+    function handleRemoveCar(index){
+        setCars(c => c.filter((_,i) => i !== index)); //using underscore to ignore the first parameter
+    }
+    function handleYearChange(event){
+        setCarYear(event.target.value);
+    }
+    function handleMakeChange(event){
+        setCarMake(event.target.value);
+    }
+    function handleModelChange(event){
+        setCarModel(event.target.value);
+    }
     return(
-        <div>
-            <p>Your favourite car is: {car.year} {car.make} {car.model}</p>
-            <input type="number" name="" id="" value={car.year} onChange={handleYearChange}/><br />
-            <input type="text" name="" id="" value={car.make} onChange={handleMakeChange} /><br />
-            <input type="text" name="" id="" value={car.model} onChange={handleModelChange} /><br />
-        </div>
-    )
-    
+        <>
+            <h2>List of Car Objects</h2>
+            <ul>
+                {cars.map((car,index)=>
+                <li key={index} onClick={() => handleRemoveCar(index)}>
+                    {car.year} {car.make} {car.model}
+                </li>)}
+                    
+            </ul>
+            <input type="number" value={carYear} onChange={handleYearChange} placeholder="Enter car year" />
+            <input type="text" value={carMake} onChange={handleMakeChange} placeholder="Enter car make" />
+            <input type="text" value={carModel} onChange={handleModelChange} placeholder="Enter car model" />
+            <button onClick={handleAddCar}>Add Car</button>
+        </>
+    );
 }
 export default MyComponent;
+
+// import { element, func } from "prop-types";
+
+// import React, {useState} from 'react';
+// function MyComponent(){
+//     const [foods,setFoods]=useState(["Apple","Banana","Orange"]);
+
+//     function handleAddFood(){
+//         const newFood = document.getElementById("foodInput").value;
+//         document.getElementById("foodInput").value=""; //reset input field
+
+//         setFoods(f =>[...f,newFood]); //add new food to the list
+
+
+//     }
+//     function handleRemoveFood(index){
+//         setFoods(f => f.filter((_,i) => i !== index)) //using underscore to ignore the first parameter
+//     }
+// return(<>
+// <h2>List of Food</h2>
+// <ul>
+//     {foods.map((food,index)=>
+//          <li key={index} onClick={() => handleRemoveFood(index)}>{food}
+//          </li>)}
+// </ul>
+// <input type="text" id="foodInput" placeholder="Enter food name" />
+// <button onClick={handleAddFood}>Add Food</button>
+// </>);
+// }
+// export default MyComponent;
+
+
+// import React , {useState} from "react";
+// function MyComponent(){
+//     const [car,setCar] = useState({year: 2024, 
+//         make:"Ford", 
+//         model:"Mustang"});
+
+//         function handleYearChange(event){
+//             // setCar({...car,year:event.target.value});
+//             setCar(prevCar => ({...prevCar, year: event.target.value}));
+//         }
+//         function handleMakeChange(event){
+//             // setCar({...car,make:event.target.value})
+//             setCar(prevCar => ({...prevCar, make: event.target.value}));
+//         }
+//         function handleModelChange(event){
+//             // setCar({...car,model:event.target.value})
+//             setCar(prevCar => ({...prevCar, model: event.target.value}));
+//         }
+//     return(
+//         <div>
+//             <p>Your favourite car is: {car.year} {car.make} {car.model}</p>
+//             <input type="number" name="" id="" value={car.year} onChange={handleYearChange}/><br />
+//             <input type="text" name="" id="" value={car.make} onChange={handleMakeChange} /><br />
+//             <input type="text" name="" id="" value={car.model} onChange={handleModelChange} /><br />
+//         </div>
+//     )
+    
+// }
+// export default MyComponent;
 
 // function MyComponent() {
 //     const [name, setName]=useState("Guest");
